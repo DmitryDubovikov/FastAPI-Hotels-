@@ -16,8 +16,8 @@ class Room(Base):
     quantity = Column(Integer, nullable=False)
     image_id = Column(Integer)
 
-    # booking = relationship("Bookings", back_populates="room")
-    # hotel = relationship("Hotels", back_populates="room")
+    # booking = relationship("Booking", back_populates="room")
+    # hotel = relationship("Hotel", back_populates="room")
 
     def __str__(self) -> str:
         return f"Room {self.id} of Hotel {self.hotel_id}"

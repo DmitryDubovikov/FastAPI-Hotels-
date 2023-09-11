@@ -11,7 +11,7 @@ class User(Base):
     email = Column(String, nullable=False)
     hashed_password = Column(String, nullable=False)
 
-    # booking = relationship("Bookings", back_populates="user")
+    # booking = relationship("Booking", back_populates="user")
 
     def __str__(self) -> str:
         return f"{self.email}"
