@@ -4,8 +4,8 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from fastapi_cache import FastAPICache
 from fastapi_cache.backends.redis import RedisBackend
-from fastapi_cache.decorator import cache
 from redis import asyncio as aioredis
+from sqladmin import Admin
 
 from app.bookings.router import router as router_bookings
 from app.users.router import router as router_users
@@ -13,8 +13,11 @@ from app.hotels.router import router as router_hotels
 from app.hotels.rooms.router import router as router_rooms
 from app.pages.router import router as router_pages
 from app.images.router import router as router_images
-
 from app.config import settings
+from app.admin.views import BookingAdmin, HotelAdmin, RoomAdmin, UserAdmin
+from app.admin.auth import authentication_backend
+from app.database import engine
+
 
 app = FastAPI()
 
@@ -59,6 +62,15 @@ async def startup():
         decode_responses=True,
     )
     FastAPICache.init(RedisBackend(redis), prefix="cache")
+
+
+admin = Admin(app, engine, authentication_backend=authentication_backend)
+# admin = Admin(app, engine)
+
+admin.add_view(UserAdmin)
+admin.add_view(HotelAdmin)
+admin.add_view(RoomAdmin)
+admin.add_view(BookingAdmin)
 
 
 @app.get("/hello")
