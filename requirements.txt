@@ -17,3 +17,4 @@ isort==5.12.0
 pyright==1.1.327
 python-json-logger==2.0.7
 sentry-sdk[fastapi]
+fastapi_versioning==0.10.0

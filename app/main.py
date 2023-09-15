@@ -7,6 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi_cache import FastAPICache
 from fastapi_cache.backends.redis import RedisBackend
+from fastapi_versioning import VersionedFastAPI
 from redis import asyncio as aioredis
 from sqladmin import Admin
 
@@ -22,7 +23,17 @@ from app.images.router import router as router_images
 from app.pages.router import router as router_pages
 from app.users.router import router as router_users
 
-app = FastAPI()
+app = FastAPI(
+    title="Hotels",
+    version="0.1.0",
+    root_path="/api",
+)
+
+app = VersionedFastAPI(
+    app,
+    version_format="{major}",
+    prefix_format="/api/v{major}",
+)
 
 app.mount("/static", StaticFiles(directory="app/static"), "static")
 
