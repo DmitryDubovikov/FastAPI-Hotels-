@@ -37,11 +37,13 @@ class Settings(BaseSettings):
     REDIS_PORT: str
 
     class Config:
-        # env_file: str = ".env"
-        env_file: str = "../.env"
+        env_file: str = ".env"
+        if __name__ == "__main__":
+            env_file: str = "../.env"
 
 
 settings = Settings()
+print(settings.model_dump())
 
 if __name__ == "__main__":
     print(settings.model_dump())
