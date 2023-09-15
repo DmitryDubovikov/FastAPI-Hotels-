@@ -9,3 +9,4 @@ celery==5.3.4
 cached flower==2.0.1
 Pillow==10.0.0
 sqladmin==0.14.1
+pytest==7.4.2

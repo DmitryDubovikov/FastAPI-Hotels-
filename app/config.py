@@ -37,8 +37,8 @@ class Settings(BaseSettings):
     REDIS_PORT: str
 
     class Config:
-        env_file: str = ".env"
-        # env_file: str = "../.env"
+        # env_file: str = ".env"
+        env_file: str = "../.env"
 
 
 settings = Settings()
