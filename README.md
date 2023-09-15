@@ -11,6 +11,7 @@ Redis as message broker
 Celery
 Flower
 Pytest
+Sentry
 
 ./app.sh
 

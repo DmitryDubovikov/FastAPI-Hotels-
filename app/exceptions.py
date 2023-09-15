@@ -39,9 +39,9 @@ class UserIsNotPresentException(BookingException):
     detail = "Invalid user"
 
 
-class RoomFullyBooked(BookingException):
+class RoomIsFullyBooked(BookingException):
     status_code = status.HTTP_409_CONFLICT
-    detail = "Room already booked"
+    detail = "Room is already fully booked"
 
 
 class RoomCannotBeBookedException(BookingException):

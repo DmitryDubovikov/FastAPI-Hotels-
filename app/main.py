@@ -1,4 +1,8 @@
-from fastapi import FastAPI
+import time
+
+import sentry_sdk
+
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi_cache import FastAPICache
@@ -6,6 +10,7 @@ from fastapi_cache.backends.redis import RedisBackend
 from redis import asyncio as aioredis
 from sqladmin import Admin
 
+from app.logger import logger
 from app.admin.auth import authentication_backend
 from app.admin.views import BookingAdmin, HotelAdmin, RoomAdmin, UserAdmin
 from app.bookings.router import router as router_bookings
@@ -27,6 +32,19 @@ app.include_router(router_hotels)
 app.include_router(router_rooms)
 app.include_router(router_pages)
 app.include_router(router_images)
+
+
+sentry_sdk.init(
+    dsn="https://d4f516fd1b37a11f440c4db4cb0ebc53@o4505885166272512.ingest.sentry.io/4505885174136832",
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for performance monitoring.
+    # We recommend adjusting this value in production.
+    traces_sample_rate=1.0,
+    # Set profiles_sample_rate to 1.0 to profile 100%
+    # of sampled transactions.
+    # We recommend adjusting this value in production.
+    profiles_sample_rate=1.0,
+)
 
 
 # Подключение CORS, чтобы запросы к API могли приходить из браузера
@@ -69,6 +87,16 @@ admin.add_view(UserAdmin)
 admin.add_view(HotelAdmin)
 admin.add_view(RoomAdmin)
 admin.add_view(BookingAdmin)
+
+
+@app.middleware("http")
+async def add_process_time_header(request: Request, call_next):
+    start_time = time.time()
+    response = await call_next(request)
+    process_time = time.time() - start_time
+    # При подключении Prometheus + Grafana подобный лог не требуется
+    logger.info("Request handling time", extra={"process_time": round(process_time, 4)})
+    return response
 
 
 @app.get("/hello")
