@@ -1,10 +1,10 @@
-from fastapi import APIRouter
+from datetime import date, datetime, timedelta
+from typing import List
+
+from fastapi import APIRouter, Query
 
 from app.hotels.rooms.dao import RoomDAO
 from app.hotels.rooms.schemas import SRoom, SRoomInfo
-from datetime import date, datetime, timedelta
-from typing import List
-from fastapi import Query
 
 router = APIRouter(prefix="/hotels", tags=["Rooms"])
 

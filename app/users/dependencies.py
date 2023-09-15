@@ -30,9 +30,9 @@ async def get_current_user(token: str = Depends(get_token)):
     exp: str = payload.get("exp")
     if (
         not exp
+        or int(exp) < (datetime.utcnow() - timedelta(minutes=180)).timestamp()
         # у меня странный глюк, в exp после декодирования получается время ровно на 3ч меньше,
         # чем туда заложено в функции create_access_token, вычтем эти 180 минут
-        or int(exp) < (datetime.utcnow() - timedelta(minutes=180)).timestamp()
     ):
         raise TokenExpiredException
     user_id: str = payload.get("sub")

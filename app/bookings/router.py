@@ -2,13 +2,9 @@ from datetime import date
 
 from fastapi import APIRouter, BackgroundTasks, Depends
 
-
 from app.bookings.dao import BookingDAO
-
 from app.bookings.schemas import SBooking, SNewBooking
-
 from app.exceptions import RoomCannotBeBookedException
-
 from app.tasks.tasks import (
     send_booking_confirmation,
     send_booking_confirmation_with_background_tasks,
@@ -20,7 +16,7 @@ router = APIRouter(prefix="/bookings", tags=["Bookings"])
 
 
 @router.get("/all")
-async def get_bookings() -> list[SBooking]:
+async def get_all_bookings() -> list[SBooking]:
     # TODO: только для тестирования. в финале удалить
     return await BookingDAO.fetch_all()
 

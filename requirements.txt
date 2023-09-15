@@ -10,3 +10,8 @@ cached flower==2.0.1
 Pillow==10.0.0
 sqladmin==0.14.1
 pytest==7.4.2
+black==23.9.1
+flake8==6.1.0
+autoflake==2.2.1
+isort==5.12.0
+pyright==1.1.327
