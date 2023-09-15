@@ -12,6 +12,7 @@ class Settings(BaseSettings):
     DB_USER: str
     DB_PASS: str
     DB_NAME: str
+    POSTGRES_PASSWORD: str
 
     @property
     def DATABASE_URL(self):

@@ -6,7 +6,7 @@ passlib==1.7.4
 python-jose==3.3.0
 fastapi-cache2[redis]
 celery==5.3.4
-cached flower==2.0.1
+flower==2.0.1
 Pillow==10.0.0
 sqladmin==0.14.1
 pytest==7.4.2
@@ -18,3 +18,4 @@ pyright==1.1.327
 python-json-logger==2.0.7
 sentry-sdk[fastapi]
 fastapi_versioning==0.10.0
+gunicorn==21.2.0
