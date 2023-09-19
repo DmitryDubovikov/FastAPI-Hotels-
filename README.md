@@ -35,9 +35,13 @@ The FastAPI Hotel Booking project is a web application designed to facilitate ho
  
 * Check endpoints with OpenAPI docs:
 http://localhost:8080/docs
+
+ <img src=".screens/endpoints.png" alt="Image Alt Text" width="600">
  
 * Admin panel:
  http://localhost:8080/admin
+
+ <img src=".screens/endpoints.png" alt="Image Alt Text" width="800">
  
 * Prometheus:
 http://localhost:9090
