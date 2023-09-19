@@ -1,4 +1,5 @@
 from datetime import date
+from fastapi import HTTPException
 
 from fastapi import APIRouter, BackgroundTasks, Depends
 
@@ -34,11 +35,20 @@ async def create_booking(
     date_to: date,
     user: User = Depends(get_current_user),
 ):
-    new_booking = await BookingDAO.insert(
-        user_id=user.id, room_id=room_id, date_from=date_from, date_to=date_to
-    )
-    if not new_booking:
-        raise RoomCannotBeBookedException
+    try:
+        import pdb
+
+        pdb.set_trace()
+        new_booking = await BookingDAO.insert(
+            user_id=user.id, room_id=room_id, date_from=date_from, date_to=date_to
+        )
+    except Exception:
+        import pdb
+
+        pdb.set_trace()
+        return HTTPException(status_code=404, detail="Item not found")
+        # raise HTTPException(status_code=404, detail="Item not found")
+        # raise RoomCannotBeBookedException
 
     # # celery
     # send_booking_confirmation.delay(

@@ -1,6 +1,7 @@
 import time
 
 import sentry_sdk
+import uvicorn
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
@@ -118,3 +119,13 @@ def get_hello():
 @app.post("/message")
 def post_message(message: str):
     return {"message": f"I got your message: '{message}'"}
+
+
+if __name__ == "__main__":
+    from config import settings
+
+    uvicorn.run(
+        "main:app",
+        host="localhost",
+        port=8000,
+    )

@@ -13,6 +13,8 @@ class Settings(BaseSettings):
     DB_PASS: str
     DB_NAME: str
     POSTGRES_PASSWORD: str
+    POSTGRES_USER: str
+    POSTGRES_DB: str
 
     @property
     def DATABASE_URL(self):
@@ -40,9 +42,9 @@ class Settings(BaseSettings):
     REDIS_PORT: str
 
     class Config:
-        env_file: str = ".env"
-        if __name__ == "__main__":
-            env_file: str = "../.env"
+        env_file: str = "fastapi-hotels/.env"
+        # if __name__ == "__main__":
+        #     env_file: str = "../.env"
 
 
 settings = Settings()

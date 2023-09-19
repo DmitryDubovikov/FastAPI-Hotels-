@@ -5,8 +5,10 @@ services:
     container_name: hotels_db
     volumes:
       - postgresdata:/var/lib/postgresql/data
-    env_file:
-      - .env
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: hotelsdb
     ports:
       - 5433:5432 # Порт нужен, только если нам нужен доступ к контейнеру напрямую
 
