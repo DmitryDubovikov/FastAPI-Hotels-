@@ -2,6 +2,7 @@ import time
 
 import sentry_sdk
 import uvicorn
+from prometheus_fastapi_instrumentator import Instrumentator
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
@@ -23,6 +24,7 @@ from app.hotels.router import router as router_hotels
 from app.images.router import router as router_images
 from app.pages.router import router as router_pages
 from app.users.router import router as router_users
+from app.prometheus.router import router as router_prometheus
 
 app = FastAPI(
     title="Hotels",
@@ -44,6 +46,7 @@ app.include_router(router_hotels)
 app.include_router(router_rooms)
 app.include_router(router_pages)
 app.include_router(router_images)
+app.include_router(router_prometheus)
 
 
 sentry_sdk.init(
@@ -91,6 +94,13 @@ async def startup():
     )
     FastAPICache.init(RedisBackend(redis), prefix="cache")
 
+
+# Подключение эндпоинта для отображения метрик для их дальнейшего сбора Прометеусом
+instrumentator = Instrumentator(
+    should_group_status_codes=False,
+    excluded_handlers=[".*admin.*", "/metrics"],
+)
+instrumentator.instrument(app).expose(app)
 
 admin = Admin(app, engine, authentication_backend=authentication_backend)
 # admin = Admin(app, engine)
