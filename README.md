@@ -5,20 +5,20 @@ This project is 1/2 test assignment and 1/2 pet project for skills development a
 The FastAPI Hotel Booking project is a web application designed to facilitate hotel booking reservations. It allows users to browse available hotels, view details of each hotel, and make reservations for their desired dates. The project primarily serves as a RESTful API for hotel booking operations.
 
 ## Technologies used:
-* FastAPI: For building the RESTful API, providing high performance and asynchronous capabilities.
-* SQLAlchemy 2: As the ORM (Object-Relational Mapping) tool to interact with the PostgreSQL database, making it easier to manage and query hotel and user data.
-* Alembic: Used for database migrations, allowing smooth updates to the database schema as the project evolves.
-* Pydantic: For data validation, serialization, and modeling, ensuring clean and efficient data handling.
-* PostgreSQL: The chosen relational database system for storing hotel information, user data, and reservations.
-* Redis for Caching: Utilized for caching frequently accessed data, improving application speed and responsiveness.
-* Redis as a Message Broker: Acts as a message broker for communication between components using publish-subscribe patterns.
-* Celery: A distributed task queue system, integrated for handling background tasks such as email notifications.
-* Flower: Provides a real-time monitoring and management dashboard for Celery, allowing administrators to monitor task progress.
-* Pytest: Employed for testing the application, ensuring its reliability and correctness.
-* Sentry: For error tracking and monitoring, helping to identify and resolve issues in real-time.
-* Prometheus: Used for collecting and storing metrics from the application, enabling performance monitoring and analysis.
-* Grafana: Integrated with Prometheus to create visual dashboards for monitoring application metrics and performance in real-time.
-* SQLAdmin: Used for database administration, providing a graphical user interface and tools for managing PostgreSQL database.
+* __FastAPI:__ For building the RESTful API, providing high performance and asynchronous capabilities.
+* __SQLAlchemy 2:__ As the ORM (Object-Relational Mapping) tool to interact with the PostgreSQL database, making it easier to manage and query hotel and user data.
+* __Alembic:__ Used for database migrations, allowing smooth updates to the database schema as the project evolves.
+* __Pydantic:__ For data validation, serialization, and modeling, ensuring clean and efficient data handling.
+* __PostgreSQL:__ The chosen relational database system for storing hotel information, user data, and reservations.
+* __Redis for Caching:__ Utilized for caching frequently accessed data, improving application speed and responsiveness.
+* __Redis as a Message Broker:__ Acts as a message broker for communication between components using publish-subscribe patterns.
+* __Celery:__ A distributed task queue system, integrated for handling background tasks such as email notifications.
+* __Flower:__ Provides a real-time monitoring and management dashboard for Celery, allowing administrators to monitor task progress.
+* __Pytest:__ Employed for testing the application, ensuring its reliability and correctness.
+* __Sentry:__ For error tracking and monitoring, helping to identify and resolve issues in real-time.
+* __Prometheus:__ Used for collecting and storing metrics from the application, enabling performance monitoring and analysis.
+* __Grafana:__ Integrated with Prometheus to create visual dashboards for monitoring application metrics and performance in real-time.
+* __SQLAdmin:__ Used for database administration, providing a graphical user interface and tools for managing PostgreSQL database.
 
 ## How to run:
 
