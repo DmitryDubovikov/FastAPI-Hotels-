@@ -36,21 +36,27 @@ The FastAPI Hotel Booking project is a web application designed to facilitate ho
 * Check endpoints with OpenAPI docs:
 http://localhost:8080/docs
 
- <img src=".screens/endpoints.png" alt="Image Alt Text" width="600">
+ <img src=".screens/endpoints.png" alt="Image Alt Text" width="729">
  
 * Admin panel:
  http://localhost:8080/admin
 
- <img src=".screens/endpoints.png" alt="Image Alt Text" width="800">
+ <img src=".screens/sqladmin.png" alt="Image Alt Text" width="800">
  
 * Prometheus:
 http://localhost:9090
+
+ <img src=".screens/prometheus.png" alt="Image Alt Text" width="800">
  
 * Grafana:
 http://localhost:3000
+
+ <img src=".screens/grafana.png" alt="Image Alt Text" width="800">
  
 * Flower:
 http://localhost:5555/
+
+ <img src=".screens/flower.png" alt="Image Alt Text">
 
 
 ./app.sh
